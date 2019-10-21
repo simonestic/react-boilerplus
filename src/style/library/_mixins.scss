@@ -1,0 +1,49 @@
+/**
+ * media queries
+ * @param  {int} $width
+ */
+@mixin mq_max($width) {
+  @media only screen and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin mq_min($width) {
+  @media only screen and (min-width: $width + 1) {
+    @content;
+  }
+}
+
+@mixin mq_min_max($min_width, $max_width) {
+  @media only screen and (min-width: $min_width) and (max-width: $max_width) {
+    @content;
+  }
+}
+
+
+
+/**
+ * make element center in parent
+ * using absolute positioning
+ * @param  {boolean} $vertical
+ * @param  {boolean} $horizontal
+ */
+@mixin centered($vertical, $horizontal) {
+  position: absolute;
+
+  @if($vertical and $horizontal) {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @else if($vertical) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @else if($horizontal) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
